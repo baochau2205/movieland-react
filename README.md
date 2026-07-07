@@ -1,8 +1,14 @@
 # MovieLand React
 
-MovieLand React is a modern movie discovery web application built with React. Users can browse movies, search by title, and view detailed information through a clean and responsive interface.
+Live Demo: https://baochau2205.github.io/movieland-react/
 
-> **Note:** This project was created for learning and portfolio purposes. It is a front-end demonstration and does not provide copyrighted movie streaming.
+GitHub Repository: https://github.com/baochau2205/movieland-react
+
+## Overview
+
+MovieLand React is a modern movie discovery web application built with React. Users can browse movies, search by title, and explore detailed movie information through a clean and responsive interface.
+
+This project was created to strengthen my front-end development skills, including React component architecture, API integration, responsive design, and clean code organization.
 
 ## Features
 
@@ -10,9 +16,9 @@ MovieLand React is a modern movie discovery web application built with React. Us
 * Search movies by title
 * View detailed movie information
 * Responsive design for desktop and mobile devices
-* Fast and modern user interface built with React
+* Dynamic data fetched from a movie API
 
-## Technologies Used
+## Technologies
 
 * React
 * JavaScript (ES6+)
@@ -25,35 +31,17 @@ MovieLand React is a modern movie discovery web application built with React. Us
 
 ```bash
 git clone https://github.com/baochau2205/movieland-react.git
-
 cd movieland-react
-
 npm install
-
 npm run dev
 ```
-
-## Project Purpose
-
-This project was built to practice modern front-end development using React. It focuses on creating reusable components, integrating APIs, building responsive layouts, and writing clean, maintainable code.
-
-## What I Learned
-
-* Building reusable React components
-* Working with REST APIs
-* Managing application state
-* Creating responsive user interfaces
-* Organizing a scalable React project structure
-* Improving debugging and problem-solving skills
 
 ## Future Improvements
 
 * User authentication
 * Favorites and watchlist
-* Dark and light mode
-* Pagination
-* Advanced filtering and sorting
 * Trailer integration
+* Advanced filtering
 * Performance optimization
 
 ## License
