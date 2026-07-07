@@ -36,7 +36,7 @@ function HomePage({ favorites, onToggleFavorite }) {
             movies: sectionResults[index].slice(0, 4),
           }))
         );
-      } catch (err) {
+      } catch {
         setError('Something went wrong. Please try again.');
       } finally {
         setLoading(false);

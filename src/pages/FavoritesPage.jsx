@@ -14,7 +14,7 @@ function FavoritesPage({ favorites, onToggleFavorite }) {
           {favorites.map((movie) => (
             <article key={movie.imdbID} className="movie-card">
               <img
-                src={movie.Poster && movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/300x450?text=No+Poster'}
+                src={movie.Poster && movie.Poster !== 'N/A' ? movie.Poster : 'https://placehold.co/300x450?text=No+Poster'}
                 alt={movie.Title}
                 className="movie-poster"
               />

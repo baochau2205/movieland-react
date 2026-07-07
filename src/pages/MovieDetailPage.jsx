@@ -24,7 +24,7 @@ function MovieDetailPage({ favorites, onToggleFavorite }) {
       try {
         const detail = await fetchMovieById(id);
         setMovie(detail);
-      } catch (err) {
+      } catch {
         setError('Something went wrong. Please try again.');
       } finally {
         setLoading(false);
@@ -32,7 +32,6 @@ function MovieDetailPage({ favorites, onToggleFavorite }) {
     };
 
     loadMovie();
-    setShowPlayer(false);
   }, [id]);
 
   useEffect(() => {
@@ -59,7 +58,7 @@ function MovieDetailPage({ favorites, onToggleFavorite }) {
   const isFavorite = favorites.some((item) => item.imdbID === movie.imdbID);
   const poster = movie.Poster && movie.Poster !== 'N/A'
     ? movie.Poster
-    : 'https://via.placeholder.com/300x450?text=No+Poster';
+    : 'https://placehold.co/300x450?text=No+Poster';
 
   const title = (movie.Title || '').toLowerCase();
   const streamSources = {

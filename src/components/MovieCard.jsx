@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function MovieCard({ movie, isFavorite, onToggleFavorite }) {
   const poster = movie.Poster && movie.Poster !== 'N/A'
     ? movie.Poster
-    : 'https://via.placeholder.com/300x450?text=No+Poster';
+    : 'https://placehold.co/300x450?text=No+Poster';
 
   return (
     <article className="movie-card">
