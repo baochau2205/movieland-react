@@ -13,11 +13,16 @@ This project was created to strengthen my front-end development skills, includin
 ## Features
 
 * Browse popular movies and curated genre collections
-* Search movies by title
+* Search movies by title, with debounced input and infinite scroll pagination
 * View detailed movie information
-* Save movies to favorites (persisted locally)
+* Save movies to Favorites and a separate Watchlist (both persisted locally)
+* Trailer modal linking out to a YouTube search for the movie
 * In-app video player experience
-* Responsive design for desktop and mobile devices
+* Dark / light theme toggle (persisted, respects system preference)
+* Loading skeletons and a friendly error state with retry
+* Lazy-loaded images with automatic fallback for broken posters
+* Page transition animations and a "back to top" button
+* Fully responsive design for desktop and mobile devices
 * Dynamic data fetched from the OMDb API
 
 ## Technologies
@@ -57,7 +62,6 @@ This app is deployed on [Vercel](https://vercel.com). It is a static Vite build,
 ## Future Improvements
 
 * User authentication
-* Trailer integration
 * Advanced filtering
 * Performance optimization
 
