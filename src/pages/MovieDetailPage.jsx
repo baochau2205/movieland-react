@@ -1,15 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import ErrorState from '../components/ErrorState';
+import { MovieDetailSkeleton } from '../components/Skeleton';
+import TrailerModal from '../components/TrailerModal';
 import { fetchMovieById } from '../services/omdb';
+import { getPosterUrl, handlePosterError } from '../utils/poster';
 
-function MovieDetailPage({ favorites, onToggleFavorite }) {
+function MovieDetailPage({ favorites, onToggleFavorite, watchlist, onToggleWatchlist }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const videoRef = useRef(null);
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [retryToken, setRetryToken] = useState(0);
   const [showPlayer, setShowPlayer] = useState(false);
+  const [showTrailer, setShowTrailer] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(1);
@@ -18,21 +24,26 @@ function MovieDetailPage({ favorites, onToggleFavorite }) {
   const [duration, setDuration] = useState(0);
 
   useEffect(() => {
+    let ignore = false;
+
     const loadMovie = async () => {
       setLoading(true);
       setError('');
       try {
         const detail = await fetchMovieById(id);
-        setMovie(detail);
+        if (!ignore) setMovie(detail);
       } catch {
-        setError('Something went wrong. Please try again.');
+        if (!ignore) setError('Something went wrong while loading this movie.');
       } finally {
-        setLoading(false);
+        if (!ignore) setLoading(false);
       }
     };
 
     loadMovie();
-  }, [id]);
+    return () => {
+      ignore = true;
+    };
+  }, [id, retryToken]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -44,11 +55,16 @@ function MovieDetailPage({ favorites, onToggleFavorite }) {
   }, []);
 
   if (loading) {
-    return <div className="state-card">Loading movie details...</div>;
+    return <MovieDetailSkeleton />;
   }
 
   if (error) {
-    return <div className="state-card error">{error}</div>;
+    return (
+      <div className="page-shell">
+        <Link to="/" className="back-link">← Back to home</Link>
+        <ErrorState message={error} onRetry={() => setRetryToken((token) => token + 1)} />
+      </div>
+    );
   }
 
   if (!movie) {
@@ -56,9 +72,8 @@ function MovieDetailPage({ favorites, onToggleFavorite }) {
   }
 
   const isFavorite = favorites.some((item) => item.imdbID === movie.imdbID);
-  const poster = movie.Poster && movie.Poster !== 'N/A'
-    ? movie.Poster
-    : 'https://placehold.co/300x450?text=No+Poster';
+  const isInWatchlist = watchlist.some((item) => item.imdbID === movie.imdbID);
+  const poster = getPosterUrl(movie);
 
   const title = (movie.Title || '').toLowerCase();
   const streamSources = {
@@ -161,7 +176,14 @@ function MovieDetailPage({ favorites, onToggleFavorite }) {
     <div className="detail-page">
       <Link to="/" className="back-link">← Back to home</Link>
       <div className="detail-layout">
-        <img src={poster} alt={movie.Title} className="detail-poster" />
+        <img
+          src={poster}
+          alt={movie.Title}
+          className="detail-poster"
+          loading="lazy"
+          decoding="async"
+          onError={handlePosterError}
+        />
         <div className="detail-content">
           <div className="detail-header">
             <div>
@@ -175,6 +197,21 @@ function MovieDetailPage({ favorites, onToggleFavorite }) {
                 onClick={() => setShowPlayer(true)}
               >
                 ▶ Watch in app
+              </button>
+              <button
+                type="button"
+                className="play-link trailer-link"
+                onClick={() => setShowTrailer(true)}
+              >
+                🎬 Trailer
+              </button>
+              <button
+                type="button"
+                className={`watchlist-btn detail-favorite ${isInWatchlist ? 'active' : ''}`}
+                onClick={() => onToggleWatchlist(movie)}
+                aria-label={isInWatchlist ? 'Remove from watchlist' : 'Add to watchlist'}
+              >
+                🔖
               </button>
               <button
                 type="button"
@@ -280,6 +317,8 @@ function MovieDetailPage({ favorites, onToggleFavorite }) {
           </div>
         </div>
       )}
+
+      {showTrailer && <TrailerModal movie={movie} onClose={() => setShowTrailer(false)} />}
     </div>
   );
 }

@@ -1,24 +1,24 @@
 import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 
-function FavoritesPage({ favorites, onToggleFavorite, watchlist, onToggleWatchlist }) {
+function WatchlistPage({ watchlist, onToggleWatchlist, favorites, onToggleFavorite }) {
   return (
     <div className="page-shell">
       <Link to="/" className="back-link">← Back to home</Link>
       <header className="section-heading">
-        <h1>Your favorites</h1>
+        <h1>Your watchlist</h1>
       </header>
-      {favorites.length === 0 ? (
-        <div className="state-card">No favorites saved yet. Tap the heart on any movie.</div>
+      {watchlist.length === 0 ? (
+        <div className="state-card">No movies in your watchlist yet. Tap the bookmark on any movie.</div>
       ) : (
         <div className="movie-grid">
-          {favorites.map((movie) => (
+          {watchlist.map((movie) => (
             <MovieCard
               key={movie.imdbID}
               movie={movie}
-              isFavorite
+              isFavorite={favorites.some((item) => item.imdbID === movie.imdbID)}
               onToggleFavorite={onToggleFavorite}
-              isInWatchlist={watchlist.some((item) => item.imdbID === movie.imdbID)}
+              isInWatchlist
               onToggleWatchlist={onToggleWatchlist}
             />
           ))}
@@ -28,4 +28,4 @@ function FavoritesPage({ favorites, onToggleFavorite, watchlist, onToggleWatchli
   );
 }
 
-export default FavoritesPage;
+export default WatchlistPage;

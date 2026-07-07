@@ -1,9 +1,9 @@
 const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY || '7035c60c';
 const OMDB_BASE_URL = 'https://www.omdbapi.com/';
 
-export async function fetchMoviesBySearch(query) {
+export async function fetchMoviesBySearch(query, page = 1) {
   const response = await fetch(
-    `${OMDB_BASE_URL}?apikey=${OMDB_API_KEY}&s=${encodeURIComponent(query)}&type=movie`
+    `${OMDB_BASE_URL}?apikey=${OMDB_API_KEY}&s=${encodeURIComponent(query)}&type=movie&page=${page}`
   );
 
   if (!response.ok) {
@@ -16,7 +16,10 @@ export async function fetchMoviesBySearch(query) {
     throw new Error(data.Error || 'No results');
   }
 
-  return data.Search || [];
+  return {
+    results: data.Search || [],
+    totalResults: Number(data.totalResults) || 0,
+  };
 }
 
 export async function fetchMovieById(id) {

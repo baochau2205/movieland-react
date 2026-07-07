@@ -1,13 +1,71 @@
 :root {
+  color-scheme: dark;
+  --bg-grad-1: #050816;
+  --bg-grad-2: #151d33;
+  --bg-grad-3: #221a3a;
+  --bg-radial: rgba(255, 122, 24, 0.2);
+
+  --text-primary: #f6f7fb;
+  --text-secondary: #c3cddf;
+  --text-muted: #9aa6bf;
+
+  --surface-a: rgba(255, 255, 255, 0.08);
+  --surface-b: rgba(255, 255, 255, 0.04);
+  --surface-border: rgba(255, 255, 255, 0.12);
+  --surface-border-soft: rgba(255, 255, 255, 0.08);
+  --surface-shadow: rgba(0, 0, 0, 0.28);
+
+  --nav-bg: rgba(10, 14, 24, 0.82);
+  --nav-border: rgba(255, 255, 255, 0.1);
+
+  --chip-bg: rgba(255, 255, 255, 0.08);
+  --pill-bg: rgba(255, 255, 255, 0.09);
+  --pill-bg-hover: rgba(255, 255, 255, 0.14);
+  --input-bg: rgba(255, 255, 255, 0.08);
+  --favorite-bg: rgba(255, 255, 255, 0.12);
+  --skeleton-base: rgba(255, 255, 255, 0.06);
+  --skeleton-shine: rgba(255, 255, 255, 0.18);
+
+  --accent-1: #ff7a18;
+  --accent-2: #ff4d6d;
+
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #f6f7fb;
-  background: linear-gradient(135deg, #050816, #151d33 45%, #221a3a);
+  color: var(--text-primary);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg-grad-1: #f5f6fb;
+  --bg-grad-2: #e9ecf6;
+  --bg-grad-3: #eef0fb;
+  --bg-radial: rgba(255, 122, 24, 0.14);
+
+  --text-primary: #12141f;
+  --text-secondary: #454c60;
+  --text-muted: #6b7385;
+
+  --surface-a: rgba(15, 20, 40, 0.055);
+  --surface-b: rgba(15, 20, 40, 0.02);
+  --surface-border: rgba(15, 20, 40, 0.1);
+  --surface-border-soft: rgba(15, 20, 40, 0.08);
+  --surface-shadow: rgba(20, 24, 40, 0.14);
+
+  --nav-bg: rgba(255, 255, 255, 0.86);
+  --nav-border: rgba(15, 20, 40, 0.08);
+
+  --chip-bg: rgba(15, 20, 40, 0.05);
+  --pill-bg: rgba(15, 20, 40, 0.06);
+  --pill-bg-hover: rgba(15, 20, 40, 0.1);
+  --input-bg: rgba(15, 20, 40, 0.05);
+  --favorite-bg: rgba(15, 20, 40, 0.08);
+  --skeleton-base: rgba(15, 20, 40, 0.07);
+  --skeleton-shine: rgba(15, 20, 40, 0.14);
 }
 
 * {
@@ -22,10 +80,12 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  color: var(--text-primary);
   background:
-    radial-gradient(circle at top left, rgba(255, 122, 24, 0.2), transparent 25%),
-    linear-gradient(135deg, #050816, #151d33 45%, #221a3a);
+    radial-gradient(circle at top left, var(--bg-radial), transparent 25%),
+    linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2) 45%, var(--bg-grad-3));
   background-attachment: fixed;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 #root {
