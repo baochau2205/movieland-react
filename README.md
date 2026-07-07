@@ -1,43 +1,50 @@
 # MovieLand React
 
-This project is a small React app for browsing movies. It is a simple learning project, and I tried to keep the experience clear and easy to use.
+Live Demo: https://movieland-react.vercel.app
 
-## Demo
+GitHub Repository: https://github.com/baochau2205/movieland-react
 
-Live demo: https://movieland-react.vercel.app
+## Overview
 
-## What it includes
+MovieLand React is a modern movie discovery web application built with React. Users can browse movies, search by title, save favorites, and explore detailed movie information through a clean and responsive interface.
 
-- Search for movies by keyword
-- View a list of movie cards
-- Open a movie detail page
-- Save movies to favorites
-- Use a simple in-browser player experience
-- Responsive layout for desktop and mobile
+This project was created to strengthen my front-end development skills, including React component architecture, API integration, responsive design, and clean code organization.
 
-## Tech stack
+## Features
 
-- React
-- React Router
-- Vite
-- OMDb API
+* Browse popular movies and curated genre collections
+* Search movies by title
+* View detailed movie information
+* Save movies to favorites (persisted locally)
+* In-app video player experience
+* Responsive design for desktop and mobile devices
+* Dynamic data fetched from the OMDb API
 
-## Getting started
+## Technologies
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. (Optional) Copy `.env.example` to `.env` and set your own `VITE_OMDB_API_KEY` (get a free key at https://www.omdbapi.com/apikey.aspx).
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
+* React
+* React Router
+* JavaScript (ES6+)
+* HTML5
+* CSS3
+* Vite
+* OMDb API
+
+## Installation
+
+```bash
+git clone https://github.com/baochau2205/movieland-react.git
+cd movieland-react
+npm install
+```
+
+(Optional) Copy `.env.example` to `.env` and set your own `VITE_OMDB_API_KEY` (get a free key at https://www.omdbapi.com/apikey.aspx).
+
+```bash
+npm run dev
+```
 
 ## Build
-
-To create a production build:
 
 ```bash
 npm run build
@@ -47,6 +54,13 @@ npm run build
 
 This app is deployed on [Vercel](https://vercel.com). It is a static Vite build, so any static host works, but `vercel.json` includes the SPA rewrite rule needed for client-side routes (e.g. `/movie/:id`, `/favorites`) to work on direct load/refresh.
 
-## Notes
+## Future Improvements
 
-This is a small demo project. It is not a full streaming platform, but it works as a simple movie browsing app.
+* User authentication
+* Trailer integration
+* Advanced filtering
+* Performance optimization
+
+## License
+
+This project is intended for educational and portfolio purposes only.
