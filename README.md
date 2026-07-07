@@ -1,16 +1,61 @@
-# React + Vite
+# MovieLand React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MovieLand React is a modern movie discovery web application built with React. Users can browse movies, search by title, and view detailed information through a clean and responsive interface.
 
-Currently, two official plugins are available:
+> **Note:** This project was created for learning and portfolio purposes. It is a front-end demonstration and does not provide copyrighted movie streaming.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* Browse popular movies
+* Search movies by title
+* View detailed movie information
+* Responsive design for desktop and mobile devices
+* Fast and modern user interface built with React
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+* React
+* JavaScript (ES6+)
+* HTML5
+* CSS3
+* Vite
+* REST API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation
+
+```bash
+git clone https://github.com/baochau2205/movieland-react.git
+
+cd movieland-react
+
+npm install
+
+npm run dev
+```
+
+## Project Purpose
+
+This project was built to practice modern front-end development using React. It focuses on creating reusable components, integrating APIs, building responsive layouts, and writing clean, maintainable code.
+
+## What I Learned
+
+* Building reusable React components
+* Working with REST APIs
+* Managing application state
+* Creating responsive user interfaces
+* Organizing a scalable React project structure
+* Improving debugging and problem-solving skills
+
+## Future Improvements
+
+* User authentication
+* Favorites and watchlist
+* Dark and light mode
+* Pagination
+* Advanced filtering and sorting
+* Trailer integration
+* Performance optimization
+
+## License
+
+This project is intended for educational and portfolio purposes only.
