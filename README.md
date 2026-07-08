@@ -1,6 +1,6 @@
 # MovieLand React
 
-Live Demo: https://react-movie-app-tan-eight.vercel.app
+Live Demo: https://react-movie-app-tan-eight.vercel.app 
 
 GitHub Repository: https://github.com/baochau2205/movieland-react
 
